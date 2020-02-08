@@ -49,17 +49,23 @@ dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constraint"
+
+    //test
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    implementation "androidx.constraintlayout:constraintlayout:$versions.constraint"
-
+    
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
 
     //lint
     ktlint "com.pinterest:ktlint:$versions.ktlint"
+
+    //dependency injection
+    implementation "org.koin:koin-android:$versions.koin"
+    implementation "org.koin:koin-android-scope:$versions.koin"
+    implementation "org.koin:koin-android-viewmodel:$versions.koin"
 
 }

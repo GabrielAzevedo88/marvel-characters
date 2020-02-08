@@ -19,37 +19,39 @@ class MarvelAPI {
         private const val PARAM_HASH = "hash"
 
         private const val TIME_ZONE = "UTC"
+
+        private fun getTimeStamp(): String =
+            (Calendar.getInstance(TimeZone.getTimeZone(TIME_ZONE)).timeInMillis / 1000L).toString()
+
+        private fun getHttpClient(): OkHttpClient.Builder =
+            OkHttpClient.Builder().addInterceptor { chain ->
+                val request = chain.request()
+                val httpUrl = request.url()
+                val timeStamp = getTimeStamp()
+
+                val newHttpUrl = httpUrl
+                    .newBuilder()
+                    .addQueryParameter(PARAM_API_KEY, PUBLIC_KEY)
+                    .addQueryParameter(PARAM_TIME_STAMP, timeStamp)
+                    .addQueryParameter(PARAM_HASH, "$timeStamp$PRIVATE_KEY$PUBLIC_KEY".md5())
+                    .build()
+
+                chain.proceed(
+                    request
+                        .newBuilder()
+                        .url(newHttpUrl)
+                        .build()
+                )
+            }
+
+        fun getMarvelApiService(): MarvelService = Retrofit
+            .Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .client(getHttpClient().build())
+            .build()
+            .create(MarvelService::class.java)
+
     }
 
-    private fun getTimeStamp(): String =
-        (Calendar.getInstance(TimeZone.getTimeZone(TIME_ZONE)).timeInMillis / 1000L).toString()
-
-    private fun getHttpClient(): OkHttpClient.Builder =
-        OkHttpClient.Builder().addInterceptor { chain ->
-            val request = chain.request()
-            val httpUrl = request.url()
-            val timeStamp = getTimeStamp()
-
-            val newHttpUrl = httpUrl
-                .newBuilder()
-                .addQueryParameter(PARAM_API_KEY, PUBLIC_KEY)
-                .addQueryParameter(PARAM_TIME_STAMP, timeStamp)
-                .addQueryParameter(PARAM_HASH, "$timeStamp$PRIVATE_KEY$PUBLIC_KEY".md5())
-                .build()
-
-            chain.proceed(
-                request
-                    .newBuilder()
-                    .url(newHttpUrl)
-                    .build()
-            )
-        }
-
-    fun getMarvelApiService(): MarvelService = Retrofit
-        .Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(MoshiConverterFactory.create())
-        .client(getHttpClient().build())
-        .build()
-        .create(MarvelService::class.java)
 }
