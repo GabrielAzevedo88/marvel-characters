@@ -1,4 +1,4 @@
-package com.android.marvelapi.models
+package com.android.marvelapi.model
 
 data class ResponseData(
     val data: Data
