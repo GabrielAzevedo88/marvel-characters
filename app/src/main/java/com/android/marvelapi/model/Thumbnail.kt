@@ -1,4 +1,4 @@
-package com.android.marvelapi.models
+package com.android.marvelapi.model
 
 data class Thumbnail(
     val extension: String,

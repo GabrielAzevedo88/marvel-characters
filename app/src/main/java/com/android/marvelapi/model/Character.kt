@@ -1,6 +1,6 @@
-package com.android.marvelapi.models
+package com.android.marvelapi.model
 
-data class Result(
+data class Character(
     val comics: Comics,
     val description: String,
     val events: Events,

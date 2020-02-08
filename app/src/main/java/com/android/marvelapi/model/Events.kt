@@ -1,6 +1,6 @@
-package com.android.marvelapi.models
+package com.android.marvelapi.model
 
-data class Stories(
+data class Events(
     val available: Int,
     val collectionURI: String,
     val items: List<ItemDetail>,
