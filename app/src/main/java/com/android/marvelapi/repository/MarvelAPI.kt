@@ -1,8 +1,10 @@
 package com.android.marvelapi.repository
 
 import com.android.marvelapi.util.md5
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import java.util.*
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -23,10 +25,16 @@ class MarvelAPI {
         private fun getTimeStamp(): String =
             (Calendar.getInstance(TimeZone.getTimeZone(TIME_ZONE)).timeInMillis / 1000L).toString()
 
-        private fun getHttpClient(): OkHttpClient.Builder =
-            OkHttpClient.Builder().addInterceptor { chain ->
+        private fun getHttpClient(): OkHttpClient.Builder {
+            val logging = HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
+
+            return OkHttpClient.Builder()
+                .addInterceptor(logging)
+                .addInterceptor { chain ->
                 val request = chain.request()
-                val httpUrl = request.url()
+                val httpUrl = request.url
                 val timeStamp = getTimeStamp()
 
                 val newHttpUrl = httpUrl
@@ -43,15 +51,15 @@ class MarvelAPI {
                         .build()
                 )
             }
+        }
 
         fun getMarvelApiService(): MarvelService = Retrofit
             .Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(getHttpClient().build())
             .build()
             .create(MarvelService::class.java)
-
     }
-
 }

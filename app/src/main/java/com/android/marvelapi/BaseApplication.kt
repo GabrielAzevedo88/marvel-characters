@@ -21,5 +21,4 @@ class BaseApplication : Application() {
             loadMarvelKoinModules()
         }
     }
-
 }

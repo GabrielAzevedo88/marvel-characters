@@ -9,7 +9,7 @@ data class Data(
     val count: Int,
     val limit: Int,
     val offset: Int,
-    @Json(name = "results")
+    @field:Json(name = "results")
     val characters: List<Character>,
     val total: Int
 ) : Parcelable
