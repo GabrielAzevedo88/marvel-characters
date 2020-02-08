@@ -21,6 +21,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 configurations {
@@ -51,14 +60,18 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraint"
 
+    //live data
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.liveData"
+
     //test
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     
-    //retrofit
+    //retrofit"
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$versions.logging"
 
     //lint
     ktlint "com.pinterest:ktlint:$versions.ktlint"
@@ -67,5 +80,10 @@ dependencies {
     implementation "org.koin:koin-android:$versions.koin"
     implementation "org.koin:koin-android-scope:$versions.koin"
     implementation "org.koin:koin-android-viewmodel:$versions.koin"
+
+    //courotines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.courotines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.courotines"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$versions.courotinesAdapter"
 
 }
