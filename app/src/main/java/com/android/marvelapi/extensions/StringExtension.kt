@@ -1,4 +1,4 @@
-package com.android.marvelapi.util
+package com.android.marvelapi.extensions
 
 import java.math.BigInteger
 import java.security.MessageDigest
