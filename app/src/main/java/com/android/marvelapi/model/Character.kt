@@ -16,4 +16,8 @@ data class Character(
     val stories: Stories,
     val thumbnail: Thumbnail,
     val urls: List<Url>
-) : Parcelable
+) : Parcelable {
+
+    fun getImageUrl(): String = thumbnail.run { "$path.$extension" }
+
+}
