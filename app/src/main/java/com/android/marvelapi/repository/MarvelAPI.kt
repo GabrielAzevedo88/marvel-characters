@@ -1,12 +1,13 @@
 package com.android.marvelapi.repository
 
-import com.android.marvelapi.util.md5
+import com.android.marvelapi.extensions.md5
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import java.util.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
 class MarvelAPI {
 
@@ -31,6 +32,9 @@ class MarvelAPI {
             }
 
             return OkHttpClient.Builder()
+                .connectTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(15, TimeUnit.SECONDS)
+                .writeTimeout(15, TimeUnit.SECONDS)
                 .addInterceptor(logging)
                 .addInterceptor { chain ->
                 val request = chain.request()
