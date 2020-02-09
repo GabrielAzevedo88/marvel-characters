@@ -11,7 +11,7 @@ class CharacterItemViewHolder(private val binding: ViewDataBinding) :
     fun binding(item: Character) {
         binding.apply {
             item.run {
-                setVariable(BR.imageUrl, thumbnail.path)
+                setVariable(BR.imageUrl, getImageUrl())
                 setVariable(BR.name, name)
             }
 

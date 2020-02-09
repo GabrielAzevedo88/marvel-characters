@@ -70,6 +70,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$versions.liveData"
     implementation "androidx.lifecycle:lifecycle-runtime:$versions.liveData"
     implementation 'androidx.paging:paging-runtime:2.1.1'
+    implementation "com.github.bumptech.glide:glide:$versions.glide"
 
     //test
     testImplementation 'junit:junit:4.13'
