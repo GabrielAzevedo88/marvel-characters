@@ -9,11 +9,11 @@ object BindingAdapterUtils {
 
     @JvmStatic
     @BindingAdapter("loadImageFromUrl")
-    fun loadImageFromUrl(imageView: ImageView, imageUrl: String) {
-        imageView.run {
+    fun loadImageFromUrl(imageView: ImageView?, imageUrl: String?) {
+        imageView?.run {
             Glide
                 .with(this.context)
-                .load(imageUrl)
+                .load(imageUrl.orEmpty())
                 .centerCrop()
                 .placeholder(R.drawable.place_holder)
                 .into(this)

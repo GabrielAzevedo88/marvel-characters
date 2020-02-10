@@ -2,6 +2,7 @@ package com.android.marvelapi.di
 
 import com.android.marvelapi.repository.MarvelAPI
 import com.android.marvelapi.repository.MarvelDataRepository
+import com.android.marvelapi.viewmodel.CharacterDetailViewModel
 import com.android.marvelapi.viewmodel.CharacterListViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
@@ -21,6 +22,7 @@ private val repositoryModule = module {
 
 private val viewModelModule = module {
     viewModel { CharacterListViewModel(repository = get()) }
+    viewModel { CharacterDetailViewModel(repository = get()) }
 }
 
 fun loadMarvelKoinModules() {
