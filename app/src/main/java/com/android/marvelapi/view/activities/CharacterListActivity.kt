@@ -2,12 +2,14 @@ package com.android.marvelapi.view.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.android.marvelapi.BR
 import com.android.marvelapi.R
 import com.android.marvelapi.adapter.CharacterItemAdapter
 import com.android.marvelapi.extensions.bindingContentView
 import com.android.marvelapi.extensions.observe
+import com.android.marvelapi.util.AppRouter
 import com.android.marvelapi.viewmodel.CharacterListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -40,6 +42,8 @@ class CharacterListActivity : AppCompatActivity() {
         aCharacterList_rvCharacters.apply {
             this.adapter = adapter
             layoutManager = GridLayoutManager(this@CharacterListActivity, NUMBER_COLUMNS)
+
+            ViewCompat.setNestedScrollingEnabled(this, false)
         }
     }
 
@@ -47,7 +51,7 @@ class CharacterListActivity : AppCompatActivity() {
         viewModel.run {
             observe(characterList) {
                 it?.run {
-                    setupRecycler(CharacterItemAdapter(this))
+                    setupRecycler(CharacterItemAdapter(this, AppRouter(this@CharacterListActivity)))
                 }
             }
         }
@@ -56,4 +60,5 @@ class CharacterListActivity : AppCompatActivity() {
     private fun getCharacterList() {
         viewModel.getList()
     }
+
 }

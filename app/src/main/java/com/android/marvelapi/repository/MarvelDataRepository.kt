@@ -5,5 +5,5 @@ import com.android.marvelapi.model.ResponseData
 
 class MarvelDataRepository(private val service: MarvelService) : MarvelService {
     override suspend fun getCharacters(): ResponseData = service.getCharacters()
-    override suspend fun getCharacter(id: String): Character = service.getCharacter(id)
+    override suspend fun getCharacter(id: Int): ResponseData = service.getCharacter(id)
 }

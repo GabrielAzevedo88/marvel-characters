@@ -1,9 +1,8 @@
 package com.android.marvelapi.repository
 
-import com.android.marvelapi.model.Character
 import com.android.marvelapi.model.ResponseData
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface MarvelService {
 
@@ -11,5 +10,5 @@ interface MarvelService {
     suspend fun getCharacters(): ResponseData
 
     @GET("characters/{characterId}")
-    suspend fun getCharacter(@Query("characterId") id: String): Character
+    suspend fun getCharacter(@Path("characterId") id: Int): ResponseData
 }
