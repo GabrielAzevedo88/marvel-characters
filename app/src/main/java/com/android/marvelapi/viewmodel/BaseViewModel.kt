@@ -44,5 +44,4 @@ open class BaseViewModel : ViewModel() {
                 State.LOADING -> getVisibility(false)
             }
     }
-
 }

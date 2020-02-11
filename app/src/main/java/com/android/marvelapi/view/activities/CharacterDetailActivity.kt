@@ -70,5 +70,4 @@ class CharacterDetailActivity : AppCompatActivity() {
     private fun getData() {
         viewModel.getCharacterDetail(characterId)
     }
-
 }

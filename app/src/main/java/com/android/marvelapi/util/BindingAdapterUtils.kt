@@ -19,5 +19,4 @@ object BindingAdapterUtils {
                 .into(this)
         }
     }
-
 }

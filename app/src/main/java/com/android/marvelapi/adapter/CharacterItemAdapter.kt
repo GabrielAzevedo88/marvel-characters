@@ -44,5 +44,4 @@ class CharacterItemAdapter(
         this.characters.addAll(characters)
         notifyDataSetChanged()
     }
-
 }
