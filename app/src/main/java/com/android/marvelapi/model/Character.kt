@@ -1,6 +1,7 @@
 package com.android.marvelapi.model
 
 import android.os.Parcelable
+import com.android.marvelapi.extensions.fullImagePath
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -18,6 +19,6 @@ data class Character(
     val urls: List<Url>
 ) : Parcelable {
 
-    fun getImageUrl(): String = thumbnail.run { "$path.$extension" }
+    fun getImageUrl(): String = thumbnail.fullImagePath()
 
 }

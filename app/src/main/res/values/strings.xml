@@ -5,5 +5,6 @@
     <string name="error_subtitle">Sabotamos os servidores!</string>
     <string name="error_button_text">Tentar de novo</string>
     <string name="character_detail_no_description">No description :(</string>
+    <string name="character_detail_no_comics">No Comics :(</string>
     <string name="character_comics_header">Comics</string>
 </resources>

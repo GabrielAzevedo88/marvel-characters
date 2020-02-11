@@ -18,6 +18,8 @@ open class BaseViewModel : ViewModel() {
     } ?: View.GONE
 
     fun setState(state: State) {
+        this.state.value = state
+
         mainLoaderVisibility.value =
             when (state) {
                 State.LOADING -> getVisibility()

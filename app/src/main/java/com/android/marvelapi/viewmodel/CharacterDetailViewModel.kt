@@ -12,6 +12,8 @@ class CharacterDetailViewModel(val repository: MarvelDataRepository) : BaseViewM
 
     var character: MutableLiveData<Character> = MutableLiveData()
     val descVisibility = MutableLiveData<Int>().apply { value = View.GONE }
+    val noComicsVisibility = MutableLiveData<Int>().apply { value = View.GONE }
+    val comicsListVisibility = MutableLiveData<Int>().apply { value = View.VISIBLE }
 
     fun getCharacterDetail(id: Int) {
         setState(State.LOADING)
@@ -20,10 +22,14 @@ class CharacterDetailViewModel(val repository: MarvelDataRepository) : BaseViewM
             try {
 
                 repository.getCharacter(id).run {
-                    character.value = this.data.characters.first()
-                    validateUi()
 
-                    setState(State.SUCCESS)
+                    takeIf { this.isSuccessful }?.run {
+                        character.value = this.body()?.data?.characters?.first()
+
+                        setState(State.SUCCESS)
+                    } ?: setState(State.ERROR)
+
+                    validateUi()
                 }
 
             } catch (e: Exception) {
@@ -32,9 +38,11 @@ class CharacterDetailViewModel(val repository: MarvelDataRepository) : BaseViewM
         }
     }
 
-    fun validateUi() {
+    private fun validateUi() {
         character.value?.run {
             descVisibility.value = getVisibility(description.isNotBlank())
+            noComicsVisibility.value = getVisibility(comics.items.isEmpty())
+            comicsListVisibility.value = getVisibility(comics.items.isNotEmpty())
         }
     }
 
