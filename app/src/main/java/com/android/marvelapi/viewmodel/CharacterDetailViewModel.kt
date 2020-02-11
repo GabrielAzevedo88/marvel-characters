@@ -31,19 +31,17 @@ class CharacterDetailViewModel(val repository: MarvelDataRepository) : BaseViewM
 
                     validateUi()
                 }
-
             } catch (e: Exception) {
                 setState(State.ERROR)
             }
         }
     }
 
-    private fun validateUi() {
+    fun validateUi() {
         character.value?.run {
             descVisibility.value = getVisibility(description.isNotBlank())
             noComicsVisibility.value = getVisibility(comics.items.isEmpty())
             comicsListVisibility.value = getVisibility(comics.items.isNotEmpty())
         }
     }
-
 }

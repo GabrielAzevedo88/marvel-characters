@@ -20,5 +20,4 @@ data class Character(
 ) : Parcelable {
 
     fun getImageUrl(): String = thumbnail.fullImagePath()
-
 }

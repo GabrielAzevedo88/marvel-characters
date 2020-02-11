@@ -2,7 +2,6 @@ package com.android.marvelapi.repository
 
 import com.android.marvelapi.model.Character
 import com.android.marvelapi.model.CharacterSummary
-import com.android.marvelapi.model.Data
 import com.android.marvelapi.model.ResponseData
 import retrofit2.Response
 import retrofit2.http.GET

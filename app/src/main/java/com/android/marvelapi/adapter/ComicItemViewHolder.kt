@@ -17,5 +17,4 @@ class ComicItemViewHolder(private val binding: ViewDataBinding) :
             executePendingBindings()
         }
     }
-
 }

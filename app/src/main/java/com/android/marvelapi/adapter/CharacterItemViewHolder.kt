@@ -4,7 +4,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.android.marvelapi.BR
 import com.android.marvelapi.extensions.fullImagePath
-import com.android.marvelapi.model.Character
 import com.android.marvelapi.model.CharacterSummary
 
 class CharacterItemViewHolder(private val binding: ViewDataBinding) :
@@ -20,5 +19,4 @@ class CharacterItemViewHolder(private val binding: ViewDataBinding) :
             executePendingBindings()
         }
     }
-
 }

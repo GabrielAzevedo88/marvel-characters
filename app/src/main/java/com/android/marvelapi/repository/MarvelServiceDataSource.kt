@@ -7,7 +7,7 @@ import com.android.marvelapi.viewmodel.BaseViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-//TODO: Ajustar para poder utilizar, não está atualizando o LiveData
+// TODO: Ajustar para poder utilizar, não está atualizando o LiveData
 class MarvelServiceDataSource(
     private val scope: CoroutineScope,
     private val repository: MarvelDataRepository,
@@ -35,7 +35,6 @@ class MarvelServiceDataSource(
                     callback.onResult(list, null, nextPage)
                     baseViewModel.setState(State.SUCCESS)
                 }
-
             } catch (e: Exception) {
                 baseViewModel.setState(State.ERROR)
                 callback.onError(e)
@@ -57,7 +56,6 @@ class MarvelServiceDataSource(
 
                     callback.onResult(list, nextPage)
                 }
-
             } catch (e: Exception) {
                 callback.onError(e)
             }
