@@ -9,7 +9,7 @@ import org.junit.Test
 class ExtensionsUnitTest {
 
     @Test
-    fun `quando desejo converter para o MD5 então deve retornar um HASH valido`() {
+    fun `when I want to convert to MD5 then I must return a valid HASH`() {
         val key = "29011988"
         val expect = "1dddc8fa422a90d086bd4b3ea325ac52"
 
@@ -17,7 +17,7 @@ class ExtensionsUnitTest {
     }
 
     @Test
-    fun `busca o path completo de um Thumbnail`() {
+    fun `takes the full path of a Thumbnail`() {
         val thumbnailMock = Thumbnail("png", "xablau")
         val expect = "xablau.png"
 

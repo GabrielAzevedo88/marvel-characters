@@ -24,7 +24,7 @@ class CharacterDetailViewModelTest() {
     }
 
     @Test
-    fun `quando o personagem não tem descrição então deve ocultar o objeto`() {
+    fun `when the character has no description then he must hide the object`() {
         sut.run {
             every { characterMock.description.isNotBlank() } returns false
 
@@ -34,7 +34,7 @@ class CharacterDetailViewModelTest() {
     }
 
     @Test
-    fun `quando não existem comics então deve aparecer a mensagem`() {
+    fun `when there are no comics then the message should appear`() {
         sut.run {
             every { characterMock.comics.items.isEmpty() } returns true
             every { characterMock.comics.items.isNotEmpty() } returns false

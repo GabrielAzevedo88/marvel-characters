@@ -20,7 +20,7 @@ class CharacterListViewModelTest {
     }
 
     @Test
-    fun `quando passo um valor de página então deve retornar um valor válido do offset`() {
+    fun `when I pass a page value then it must return a valid offset value`() {
 
         sut.run {
             val page = 5

@@ -19,21 +19,21 @@ class BaseViewModelTest {
     }
 
     @Test
-    fun `quando desejo mostrar o objeto então deve retornar visivel`() {
+    fun `when you want to show the object then return visible`() {
         sut.run {
             Assert.assertEquals(View.VISIBLE, getVisibility())
         }
     }
 
     @Test
-    fun `quando desejo coultar o objeto então deve retornar gone`() {
+    fun `when I want to match the object then it must return gone`() {
         sut.run {
             Assert.assertEquals(View.GONE, getVisibility(false))
         }
     }
 
     @Test
-    fun `quando o app esta carregando então deve ter apenas o loader visivel`() {
+    fun `when the app is loading then it should only have the loader visible`() {
         sut.run {
             setState(State.LOADING)
 
@@ -45,7 +45,7 @@ class BaseViewModelTest {
     }
 
     @Test
-    fun `quando ocorre algum erro na request então deve aparecer a mensagem de erro`() {
+    fun `when an error occurs in the request then the error message should appear`() {
         sut.run {
             setState(State.ERROR)
 
@@ -57,7 +57,7 @@ class BaseViewModelTest {
     }
 
     @Test
-    fun `quando carrega as informações então o conteudo deve aparecer`() {
+    fun `when you load the information then the content should appear`() {
         sut.run {
             setState(State.SUCCESS)
 
