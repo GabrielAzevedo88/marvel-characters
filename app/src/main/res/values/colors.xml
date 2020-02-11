@@ -2,5 +2,12 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">@color/red_marvel</color>
+
+    <color name="blue_marvel">#2A75B3</color>
+    <color name="red_marvel">#CC4224</color>
+    <color name="red_marvel_opacity">#48CC4224</color>
+    <color name="yellow_marvel">#F3D403</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
 </resources>
