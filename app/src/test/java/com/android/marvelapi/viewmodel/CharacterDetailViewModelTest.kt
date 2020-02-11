@@ -26,7 +26,9 @@ class CharacterDetailViewModelTest() {
     @Test
     fun `when the character has no description then he must hide the object`() {
         sut.run {
-            every { characterMock.description.isNotBlank() } returns false
+            character.value = characterMock
+
+            every { characterMock.description } returns ""
 
             validateUi()
             assertEquals(View.GONE, descVisibility.value)
@@ -36,8 +38,9 @@ class CharacterDetailViewModelTest() {
     @Test
     fun `when there are no comics then the message should appear`() {
         sut.run {
-            every { characterMock.comics.items.isEmpty() } returns true
-            every { characterMock.comics.items.isNotEmpty() } returns false
+            character.value = characterMock
+
+            every { characterMock.comics.items } returns emptyList()
 
             validateUi()
             assertEquals(View.VISIBLE, noComicsVisibility.value)
