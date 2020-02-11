@@ -26,8 +26,8 @@
                 android:id="@+id/aCharacterDetail_tvDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="12dp"
                 android:paddingStart="24dp"
+                android:paddingTop="12dp"
                 android:paddingEnd="24dp"
                 android:paddingBottom="12dp"
                 android:text="@{viewModel.character.description}"
@@ -51,10 +51,23 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/aCharacterDetail_rvComics"
                 android:layout_width="match_parent"
+                android:visibility="@{viewModel.comicsListVisibility.intValue()}"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/layout_comic_item" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="24dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/marvel_bold"
+                android:gravity="center"
+                android:text="@string/character_detail_no_comics"
+                android:textColor="@color/red_marvel"
+                android:textSize="24sp"
+                android:visibility="@{viewModel.noComicsVisibility.intValue()}" />
+
         </LinearLayout>
+
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/aCharacterDetail_laLoader"

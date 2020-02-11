@@ -79,7 +79,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/aCharacterList_navBar"
-            app:onRetry="@{()-> viewModel.getList()}" />
+            app:onRetry="@{()-> viewModel.getList(false)}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

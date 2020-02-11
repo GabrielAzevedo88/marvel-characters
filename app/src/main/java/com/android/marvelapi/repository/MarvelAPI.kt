@@ -20,7 +20,6 @@ class MarvelAPI {
         private const val PARAM_TIME_STAMP = "ts"
         private const val PARAM_HASH = "hash"
 
-        private const val TIME_ZONE = "UTC"
         private const val TIMEOUT: Long = 15
 
         private fun getTimeStamp(): String =
