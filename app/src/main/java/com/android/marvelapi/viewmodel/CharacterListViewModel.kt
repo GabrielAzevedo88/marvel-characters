@@ -36,16 +36,15 @@ class CharacterListViewModel(val repository: MarvelDataRepository) : BaseViewMod
                         } ?: setState(State.ERROR)
                     } ?: setState(State.ERROR)
                 }
-
             } catch (e: Exception) {
                 setState(State.ERROR)
             }
         }
     }
 
-    private fun getOffsetValue(page: Int): Int = (page * OFFSET)
+    fun getOffsetValue(page: Int): Int = (page * OFFSET)
 
-    //TODO: Usar quando arrumar o pagging
+    // TODO: Usar quando arrumar o pagging
 //    lateinit var postsLiveData: LiveData<PagedList<Character>>
 //    fun getList() {
 //        val config = PagedList.Config.Builder()

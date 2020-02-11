@@ -29,5 +29,4 @@ class ComicItemAdapter(
     }
 
     override fun getItemCount(): Int = comics.count()
-
 }

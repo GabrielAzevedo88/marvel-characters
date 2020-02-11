@@ -105,5 +105,4 @@ class CharacterListActivity : AppCompatActivity() {
             aCharacterList_rvCharacters.layoutManager?.onRestoreInstanceState(recyclerState)
         }
     }
-
 }
