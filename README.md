@@ -29,3 +29,4 @@ https://developer.marvel.com/
 # TODO List
 - Pagging Library
 - Room database para salvar localmente
+- Splash Screen
